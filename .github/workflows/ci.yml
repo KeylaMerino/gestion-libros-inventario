@@ -1,13 +1,24 @@
 name: CI
 
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Descargar código
+        uses: actions/checkout@v4
 
-      - name: Verificar que el pipeline corre
-        run: echo "Pipeline ejecutado correctamente"
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instalar pytest
+        run: pip install pytest
+
+      - name: Ejecutar pruebas
+        run: pytest
