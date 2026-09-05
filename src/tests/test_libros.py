@@ -1,4 +1,4 @@
-from src.libros import registrar_libro, consultar_libro
+from libros import registrar_libro, consultar_libro
 
 
 def test_registrar_y_consultar_libro():
